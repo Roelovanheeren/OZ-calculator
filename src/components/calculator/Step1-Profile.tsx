@@ -49,7 +49,7 @@ export function Step1Profile({ onComplete }: Props) {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-1">
               <label className="block text-sm font-medium text-gray-700">
-                Investment Profit Calculator
+                Realised capital gains in last 6 months
               </label>
               <p className="text-xs text-gray-600 mb-2" style={{ 
                 fontFamily: 'Inter, Helvetica Neue, sans-serif'
@@ -75,7 +75,7 @@ export function Step1Profile({ onComplete }: Props) {
             <Input
               label="Date of Sale"
               type="date"
-              placeholder="Select date"
+              placeholder="YYYY-MM-DD"
               {...register('saleDate', validationRules.saleDate)}
               error={errors.saleDate?.message}
             />
