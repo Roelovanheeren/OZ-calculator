@@ -16,9 +16,13 @@ export function ProgressBar({ currentStep, totalSteps, className }: ProgressBarP
     { number: 5, title: 'Next Steps', description: 'Get your package' }
   ];
 
+  const currentStepData = steps[currentStep - 1];
+  const totalStepsCount = totalSteps || steps.length;
+
   return (
     <div className={cn('w-full max-w-7xl mx-auto mb-8', className)}>
-      <div className="flex items-center justify-between overflow-x-auto">
+      {/* Desktop: Show all steps */}
+      <div className="hidden md:flex items-center justify-between overflow-x-auto">
         {steps.map((step, index) => (
           <div key={step.number} className="flex items-center flex-shrink-0">
             {/* Step Circle */}
@@ -71,6 +75,20 @@ export function ProgressBar({ currentStep, totalSteps, className }: ProgressBarP
             )}
           </div>
         ))}
+      </div>
+
+      {/* Mobile: Show current step only */}
+      <div className="md:hidden text-center">
+        <div className="text-sm font-medium text-gray-600 mb-1" style={{
+          fontFamily: 'Inter, Helvetica Neue, sans-serif'
+        }}>
+          {currentStep}/{totalStepsCount} {currentStepData?.title}
+        </div>
+        <div className="text-xs text-gray-500" style={{
+          fontFamily: 'Inter, Helvetica Neue, sans-serif'
+        }}>
+          {currentStepData?.description}
+        </div>
       </div>
     </div>
   );

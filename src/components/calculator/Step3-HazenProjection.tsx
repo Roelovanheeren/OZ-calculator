@@ -99,7 +99,7 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                       min={250000}
                       max={19323884}
                       step={1000}
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-50"
+                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-100"
                       placeholder="1000000"
                     />
                     <p className="text-xs text-gray-500 mt-1">

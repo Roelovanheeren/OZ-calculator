@@ -56,12 +56,12 @@ export function Step1Profile({ onComplete }: Props) {
               }}>
                 How much profit did you make from recent sales? (stocks, property, business assets, etc.)
               </p>
-              <input
-                type="number"
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-50"
-                placeholder="e.g., 500000"
-                {...register('capitalGainAmount', validationRules.capitalGainAmount)}
-              />
+                    <input
+                      type="number"
+                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-100"
+                      placeholder="e.g., 500000"
+                      {...register('capitalGainAmount', validationRules.capitalGainAmount)}
+                    />
               <p className="text-xs text-gray-500 mt-1" style={{ 
                 fontFamily: 'Inter, Helvetica Neue, sans-serif'
               }}>

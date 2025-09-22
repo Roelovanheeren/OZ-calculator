@@ -34,7 +34,7 @@ export function Input({
         <input
           id={inputId}
           className={cn(
-            'block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm',
+            'block w-full rounded-md border-gray-300 bg-gray-100 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm',
             prefix && 'pl-16',
             suffix && 'pr-7',
             error && 'border-red-300 focus:border-red-500 focus:ring-red-500',
