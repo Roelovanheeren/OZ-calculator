@@ -13,7 +13,7 @@ export function ProgressBar({ currentStep, totalSteps, className }: ProgressBarP
     { number: 2, title: 'Tax Liability', description: 'Current tax burden' },
     { number: 3, title: 'OZ Projection', description: 'Hazen Road benefits' },
     { number: 4, title: 'Comparison', description: 'Side-by-side analysis' },
-    { number: 5, title: 'Lead Capture', description: 'Get your package' }
+    { number: 5, title: 'Next Steps', description: 'Get your package' }
   ];
 
   return (

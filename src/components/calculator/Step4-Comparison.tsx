@@ -29,44 +29,37 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
   const withOZValue = ozProjection.projectedValue;
   const withOZNetWealth = withOZValue; // No taxes on appreciation with OZ
   
-  const netWealthDifference = withOZNetWealth - withoutOZNetWealth;
 
   const comparisonData = [
     {
       label: 'Initial Investment',
       withoutOZ: availableToInvest,
       withOZ: ozProjection.investmentAmount,
-      difference: ozProjection.investmentAmount - availableToInvest
     },
     {
       label: 'Taxes Paid Now',
       withoutOZ: taxesPaidNow,
       withOZ: 0,
-      difference: -taxesPaidNow
     },
     {
       label: 'Year 1 Tax Savings',
       withoutOZ: 0,
       withOZ: ozProjection.depreciationTaxSavings,
-      difference: ozProjection.depreciationTaxSavings
     },
     {
       label: `${ozProjection.holdPeriod}-Year Value`,
       withoutOZ: withoutOZValue,
       withOZ: withOZValue,
-      difference: withOZValue - withoutOZValue
     },
     {
       label: 'Total Tax Savings',
       withoutOZ: 0,
       withOZ: ozProjection.totalStackedBenefits,
-      difference: ozProjection.totalStackedBenefits
     },
     {
       label: 'Net Wealth After Taxes',
       withoutOZ: withoutOZNetWealth,
       withOZ: withOZNetWealth + ozProjection.depreciationTaxSavings,
-      difference: netWealthDifference + ozProjection.depreciationTaxSavings,
       highlight: true
     }
   ];
@@ -104,7 +97,6 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                     <th className="text-left py-3">Scenario</th>
                     <th className="text-right py-3">Without OZ</th>
                     <th className="text-right py-3">With Hazen Road OZ</th>
-                    <th className="text-right py-3">Difference</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -116,11 +108,6 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                       <td className="py-3 font-medium" style={{ color: 'var(--text-primary)' }}>{row.label}</td>
                       <td className="py-3 text-right" style={{ color: 'var(--text-primary)' }}>{formatCurrency(row.withoutOZ)}</td>
                       <td className="py-3 text-right" style={{ color: 'var(--text-primary)' }}>{formatCurrency(row.withOZ)}</td>
-                      <td className={`py-3 text-right font-semibold ${
-                        row.difference > 0 ? 'positive-value' : row.difference < 0 ? 'negative-value' : ''
-                      }`}>
-                        {row.difference > 0 ? '+' : ''}{formatCurrency(row.difference)}
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -144,7 +131,6 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                 color: '#2c3e50',
                 fontFamily: 'Playfair Display, Georgia, serif'
               }}>
-                {formatCurrency(netWealthDifference + ozProjection.depreciationTaxSavings)}
               </div>
                 <p className="text-gray-600" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
@@ -155,7 +141,6 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                 <p className="text-sm text-blue-800" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>
-                  <strong>Key Insight:</strong> By investing your {formatCurrency(originalGainAmount)} gain in Hazen Road&apos;s OZ Fund with triple-stacked tax benefits (OZ deferral + bonus depreciation + tax-free appreciation), you could have {formatCurrency(netWealthDifference + ozProjection.depreciationTaxSavings)} more wealth in {ozProjection.holdPeriod} years.
                 </p>
               </div>
             </CardContent>
