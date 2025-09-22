@@ -151,7 +151,7 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                 <div className="text-3xl font-bold text-green-600 mb-2">
                   {formatCurrency(projectedValue)}
                 </div>
-                <p className="text-gray-600">Projected Value in {holdPeriod} Years</p>
+                <p className="text-gray-600">Projected Value at Exit</p>
               </div>
               
               <div className="grid grid-cols-2 gap-4 text-sm">
