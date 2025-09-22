@@ -70,7 +70,7 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                   <div className="mb-4">
                     <Slider
                       min={250000}
-                      max={21000000}
+                      max={19323884}
                       step={25000}
                       value={investmentAmount || ""}
                       onChange={(e) => setInvestmentAmount(Number(e.target.value) || 0)}
@@ -88,13 +88,13 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                       value={investmentAmount || ""}
                       onChange={(e) => setInvestmentAmount(Number(e.target.value) || 0)}
                       min={250000}
-                      max={21000000}
+                      max={19323884}
                       step={1000}
                       className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-50"
                       placeholder="1000000"
                     />
                     <p className="text-xs text-gray-500 mt-1">
-                      Minimum: $250,000 | Maximum: $21,000,000
+                      Minimum: $250,000 | Maximum: $19,323,884
                     </p>
                   </div>
                 </div>
