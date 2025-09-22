@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const GHL_API_KEY = process.env.GHL_API_KEY || 'pit-3e5a23df-ba94-461d-be76-4d5177727590';
-const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID || 'VYZcxHGdxD0Dj1cj1ZU4';
+const GHL_LOCATION_ID = process.env.GHL_LOCATION_ID || 'tsOZG2ZAczTNL8pSwAQ2';
 
 interface LeadData {
   name: string;
