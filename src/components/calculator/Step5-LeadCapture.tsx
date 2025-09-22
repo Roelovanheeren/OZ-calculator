@@ -72,7 +72,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
       <div className="max-w-2xl mx-auto">
         <Card className="text-center">
           <CardHeader>
-            <div className="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--background-light)' }}>
+            <div className="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-2" style={{ backgroundColor: 'var(--background-light)' }}>
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--primary-navy)' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -86,7 +86,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
           </CardHeader>
           <CardContent className="space-y-6">
             <div style={{ color: 'var(--text-secondary)' }}>
-              <p className="mb-4" style={{ fontFamily: 'var(--font-secondary)' }}>Check your email in the next 5 minutes for:</p>
+              <p className="mb-2" style={{ fontFamily: 'var(--font-secondary)' }}>Check your email in the next 5 minutes for:</p>
               <ul className="text-left space-y-2 max-w-md mx-auto">
                 <li className="flex items-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" style={{ color: 'var(--primary-navy)' }}>
@@ -122,7 +122,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
             </div>
             
             <Button onClick={() => window.location.reload()} className="btn-primary" style={{ 
-              fontSize: '1.125rem',
+              fontSize: '0.875rem',
               padding: 'var(--space-4) var(--space-6)'
             }}>
               Calculate Another Scenario
@@ -151,7 +151,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
               }}>
                 {ozProjection ? formatCurrency(ozProjection.totalStackedBenefits) : '$0'}
               </div>
-              <div className="text-xl mb-4" style={{ 
+              <div className="text-xl mb-2 w-4/5" style={{ 
                 fontFamily: 'Inter, Helvetica Neue, sans-serif',
                 color: '#2c3e50'
               }}>
@@ -280,12 +280,12 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
             </div>
           </div>
           
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-4">
             <Button variant="outline" onClick={onBack} className="btn-secondary">
               ← Back
             </Button>
             <Button type="submit" className="btn-primary" isLoading={isSubmitting} style={{ 
-              fontSize: '1.125rem',
+              fontSize: '0.875rem',
               padding: 'var(--space-4) var(--space-6)'
             }}>
               Receive Investment Package

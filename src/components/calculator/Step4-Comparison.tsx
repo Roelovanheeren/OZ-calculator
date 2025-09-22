@@ -204,15 +204,15 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between gap-4 mt-8">
         <Button variant="outline" onClick={onBack} className="btn-secondary">
           ← Back
         </Button>
         <Button onClick={onNext} className="btn-primary" style={{ 
-          fontSize: '1.125rem',
+          fontSize: '0.875rem',
           padding: 'var(--space-4) var(--space-6)'
         }}>
-          Get Your Investment Package →
+          View Investment Package →
         </Button>
       </div>
     </div>

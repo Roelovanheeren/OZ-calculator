@@ -72,8 +72,8 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                       min={250000}
                       max={21000000}
                       step={25000}
-                      value={investmentAmount}
-                      onChange={(e) => setInvestmentAmount(Number(e.target.value))}
+                      value={investmentAmount || ""}
+                      onChange={(e) => setInvestmentAmount(Number(e.target.value) || 0)}
                       formatValue={(value) => formatCurrency(value)}
                     />
                   </div>
@@ -85,8 +85,8 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                     </label>
                     <input
                       type="number"
-                      value={investmentAmount}
-                      onChange={(e) => setInvestmentAmount(Number(e.target.value))}
+                      value={investmentAmount || ""}
+                      onChange={(e) => setInvestmentAmount(Number(e.target.value) || 0)}
                       min={250000}
                       max={21000000}
                       step={1000}
