@@ -231,7 +231,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
               </svg>
               <div>
                 <p className="font-medium text-gray-900">Free 15-minute consultation</p>
-                <p className="text-sm text-gray-600">With our OZ investment specialists</p>
+                <p className="text-sm text-gray-600">With Hazen Road Investment Director</p>
               </div>
             </div>
           </div>
