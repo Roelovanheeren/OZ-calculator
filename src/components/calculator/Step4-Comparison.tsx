@@ -131,10 +131,12 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                 color: '#2c3e50',
                 fontFamily: 'Playfair Display, Georgia, serif'
               }}>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
                 <p className="text-gray-600" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>Additional Wealth with Triple-Stacked Benefits</p>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
               
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -142,6 +144,7 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>
                 </p>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
             </CardContent>
           </Card>
@@ -164,6 +167,7 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
               }}>
                 {formatCurrency(ozProjection.depreciationTaxSavings)} in Year 1
               </span>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
               <div className="flex items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600 flex-1" style={{ 
@@ -175,6 +179,7 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
               }}>
                 Defer {formatCurrency(taxesPaidNow)} in taxes until 2026
               </span>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
               <div className="flex items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600 flex-1" style={{ 
@@ -186,6 +191,7 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
               }}>
                 Pay $0 in taxes on {formatCurrency(ozProjection.taxFreeGains)} in gains
               </span>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
               <div className="flex items-center py-2">
                 <span className="text-gray-600 font-semibold flex-1" style={{ 
@@ -197,6 +203,7 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
               }}>
                 {formatCurrency(ozProjection.totalStackedBenefits)}
               </span>
+                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
             </CardContent>
           </Card>
