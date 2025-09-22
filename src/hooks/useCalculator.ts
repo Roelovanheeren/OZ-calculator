@@ -121,7 +121,7 @@ export function useCalculator() {
 function isProfileComplete(profile: Partial<InvestorProfile>): profile is InvestorProfile {
   return !!(
     profile.capitalGainAmount &&
-    profile.gainType &&
+    
     profile.saleDate &&
     profile.state &&
     profile.filingStatus &&

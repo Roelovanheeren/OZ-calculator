@@ -1,6 +1,6 @@
 export interface InvestorProfile {
   capitalGainAmount: number;
-  gainType: 'stock' | 'realEstate' | 'business' | 'other';
+  
   saleDate: string;
   state: string;
   filingStatus: 'single' | 'marriedJoint' | 'marriedSeparate';

@@ -4,9 +4,6 @@ export const validationRules = {
     min: { value: 1000, message: 'Minimum $1,000 required' },
     max: { value: 100000000, message: 'Maximum $100M allowed' }
   },
-  gainType: {
-    required: 'Gain type is required'
-  },
   saleDate: {
     required: 'Sale date is required',
     validate: (value: string | undefined) => {

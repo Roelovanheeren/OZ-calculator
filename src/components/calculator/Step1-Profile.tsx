@@ -25,12 +25,6 @@ export function Step1Profile({ onComplete, initialData }: Props) {
     onComplete(data);
   };
   
-  const gainTypeOptions = [
-    { value: 'stock', label: 'Stock/Securities Sale', description: 'Sale of stocks, bonds, or other securities' },
-    { value: 'realEstate', label: 'Real Estate Sale', description: 'Sale of rental property, land, or primary residence' },
-    { value: 'business', label: 'Business Sale', description: 'Sale of business or business assets' },
-    { value: 'other', label: 'Other Investment', description: 'Other capital gains from investments' }
-  ];
   
   const filingStatusOptions = [
     { value: 'single', label: 'Single', description: 'Unmarried or legally separated' },
@@ -128,34 +122,6 @@ export function Step1Profile({ onComplete, initialData }: Props) {
           
           <div className="space-y-3">
             <label className="block text-sm font-medium form-label">
-              Type of Gain
-            </label>
-            <div className="space-y-2">
-              {gainTypeOptions.map((option) => (
-                <label key={option.value} className="flex items-start space-x-3 p-3 cursor-pointer transition-colors" style={{
-                  backgroundColor: 'transparent'
-                }}>
-                  <input
-                    type="radio"
-                    value={option.value}
-                    {...register('gainType', validationRules.gainType)}
-                    className="mt-1 h-4 w-4"
-                    style={{
-                      accentColor: '#2c3e50'
-                    }}
-                  />
-                  <div className="flex-1">
-                    <div className="text-sm font-medium" style={{ color: '#000000' }}>
-                      {option.label}
-                    </div>
-                    <div className="text-sm mt-1" style={{ color: '#6c757d' }}>
-                      {option.description}
-                    </div>
-                  </div>
-                </label>
-              ))}
-            </div>
-            {errors.gainType && (
               <p className="text-sm text-red-600">{errors.gainType.message}</p>
             )}
           </div>
