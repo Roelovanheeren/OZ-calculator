@@ -54,11 +54,11 @@ export const FEDERAL_ORDINARY_INCOME_2025 = {
 };
 
 export const INCOME_RANGES = [
-  { value: 50000, label: 'Under $50k' },
-  { value: 100000, label: '$50k - $100k' },
-  { value: 200000, label: '$100k - $200k' },
-  { value: 400000, label: '$200k - $400k' },
-  { value: 600000, label: '$400k - $600k' },
-  { value: 1000000, label: '$600k - $1M' },
+  { value: 100000, label: 'Under $100k' },
+  { value: 150000, label: '$100k - $150k' },
+  { value: 300000, label: '$150k - $300k' },
+  { value: 500000, label: '$300k - $500k' },
+  { value: 750000, label: '$500k - $750k' },
+  { value: 1000000, label: '$750k - $1M' },
   { value: 2000000, label: 'Over $1M' }
 ];
