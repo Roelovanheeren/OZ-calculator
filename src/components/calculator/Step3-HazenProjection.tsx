@@ -6,7 +6,7 @@ import { Button } from '../ui/Button';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/Card';
 import { Slider } from '../ui/Slider';
 import { formatCurrency } from '../../lib/utils/formatters';
-import { HAZEN_PROJECT_DATA, HOLD_PERIODS } from '../../lib/data/hazenData';
+import { HAZEN_PROJECT_DATA } from '../../lib/data/hazenData';
 
 interface Props {
   profile: Partial<InvestorProfile>;
@@ -18,13 +18,12 @@ interface Props {
 export function Step3HazenProjection({ onComplete, onBack }: Props) {
   const [investmentAmount, setInvestmentAmount] = useState(500000);
   const [scenario] = useState<'conservative' | 'moderate' | 'optimistic'>('moderate');
-  const [holdPeriod, setHoldPeriod] = useState(10);
 
   const handleSubmit = () => {
     onComplete({
       investmentAmount,
       scenario,
-      holdPeriod
+      holdPeriod: 10 // Fixed hold period since it doesn't affect the calculation
     });
   };
 
@@ -110,37 +109,6 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <label className="block text-sm font-medium form-label">
-                  Hold Period
-                </label>
-                <div className="space-y-2">
-                  {HOLD_PERIODS.map((period) => (
-                    <label key={period.value} className="flex items-start space-x-3 p-3 cursor-pointer transition-colors" style={{
-                      backgroundColor: 'transparent'
-                    }}>
-                      <input
-                        type="radio"
-                        value={period.value}
-                        checked={holdPeriod === period.value}
-                        onChange={(e) => setHoldPeriod(Number(e.target.value))}
-                        className="mt-1 h-4 w-4"
-                        style={{
-                          accentColor: '#2c3e50'
-                        }}
-                      />
-                      <div className="flex-1">
-                        <div className="text-sm font-medium" style={{ color: '#000000' }}>
-                          {period.label}
-                        </div>
-                        <div className="text-sm mt-1" style={{ color: '#6c757d' }}>
-                          {period.description}
-                        </div>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
