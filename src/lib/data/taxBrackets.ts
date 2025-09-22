@@ -62,3 +62,4 @@ export const INCOME_RANGES = [
   { value: 1000000, label: '$750k - $1M' },
   { value: 2000000, label: 'Over $1M' }
 ];
+// Updated income ranges Mon Sep 22 16:59:07 WITA 2025
