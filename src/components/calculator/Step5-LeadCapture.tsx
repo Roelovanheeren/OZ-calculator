@@ -151,19 +151,42 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
               }}>
                 {ozProjection ? formatCurrency(ozProjection.totalStackedBenefits) : '$0'}
               </div>
-              <div className="text-xl mb-2 w-4/5" style={{ 
+              <div className="text-xl mb-4" style={{ 
                 fontFamily: 'Inter, Helvetica Neue, sans-serif',
                 color: '#2c3e50'
               }}>
                 Your Total Tax Advantage with Triple-Stacked Benefits
               </div>
-              <div className="text-sm" style={{ 
-                fontFamily: 'Inter, Helvetica Neue, sans-serif',
-                color: '#2c3e50',
-                opacity: 0.9
-              }}>
-                OZ Deferral + Bonus Depreciation + 10-Year Tax-Free Gains
-              </div>
+              
+              {/* Benefits Breakdown */}
+              {ozProjection && (
+                <div className="space-y-2 text-sm" style={{ 
+                  fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                  color: '#2c3e50',
+                  opacity: 0.9
+                }}>
+                  <div className="flex justify-center items-center space-x-2">
+                    <span>OZ Deferral: {formatCurrency(ozProjection.deferredTax)}</span>
+                    <span>+</span>
+                    <span>Bonus Depreciation: {formatCurrency(ozProjection.depreciationTaxSavings)}</span>
+                    <span>+</span>
+                    <span>Tax-Free Gains: {formatCurrency(ozProjection.appreciationTaxSaved)}</span>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    = {formatCurrency(ozProjection.totalStackedBenefits)} Total
+                  </div>
+                </div>
+              )}
+              
+              {!ozProjection && (
+                <div className="text-sm" style={{ 
+                  fontFamily: 'Inter, Helvetica Neue, sans-serif',
+                  color: '#2c3e50',
+                  opacity: 0.9
+                }}>
+                  OZ Deferral + Bonus Depreciation + 10-Year Tax-Free Gains
+                </div>
+              )}
             </div>
           </CardContent>
         </CardHeader>
