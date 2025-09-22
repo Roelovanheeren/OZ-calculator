@@ -288,7 +288,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
               fontSize: '1.125rem',
               padding: 'var(--space-4) var(--space-6)'
             }}>
-              Send My Hazen Road Investment Package
+              Receive Investment Package
             </Button>
           </div>
         </form>

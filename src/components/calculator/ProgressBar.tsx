@@ -17,7 +17,7 @@ export function ProgressBar({ currentStep, totalSteps, className }: ProgressBarP
   ];
 
   return (
-    <div className={cn('w-full max-w-6xl mx-auto mb-8', className)}>
+    <div className={cn('w-full max-w-7xl mx-auto mb-8', className)}>
       <div className="flex items-center justify-between overflow-x-auto">
         {steps.map((step, index) => (
           <div key={step.number} className="flex items-center flex-shrink-0">
@@ -25,7 +25,7 @@ export function ProgressBar({ currentStep, totalSteps, className }: ProgressBarP
             <div className="flex flex-col items-center">
               <div
                 className={cn(
-                  'w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium border-2 transition-colors',
+                  'w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border-2 transition-colors',
                   currentStep >= step.number
                     ? 'progress-step active'
                     : 'progress-step'

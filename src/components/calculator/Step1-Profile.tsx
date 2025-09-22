@@ -60,7 +60,7 @@ export function Step1Profile({ onComplete, initialData }: Props) {
             backgroundColor: '#f0f8ff',
             borderColor: '#bfdbfe'
           }}>
-            <p className="text-sm text-blue-800 text-center mb-3" style={{ 
+            <p className="text-xs text-blue-800 text-center mb-3" style={{ 
               fontFamily: 'Inter, Helvetica Neue, sans-serif'
             }}>
               Enter your recent capital gains to discover how much you could save by reinvesting those profits into the Hazen Road Opportunity Zone Fund
