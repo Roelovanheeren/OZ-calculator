@@ -14,27 +14,27 @@ export const HAZEN_PROJECT_DATA = {
   },
   scenarios: {
     conservative: {
-      irr: 0.2224, // 22.24% LP IRR at 4.5% cap rate
+      irr: Math.pow(1 + 1.603, 1/10) - 1, // 10.03% actual annual return from 160.30% LP Cash on Cash Return
       yield: 0.0803, // 8.03% average development yield over 10 years
-      noi: 3570000,
+      noi: 5159032, // Year 10 NOI from CSV
       label: "Base Market Rent",
       description: "Conservative projections based on current market rents",
       year1CashFlow: 0.03, // 3% cash-on-cash in year 1
       year1NOI: 103525 // Investor's pro-rata share of NOI
     },
     moderate: {
-      irr: 0.2224, // 22.24% LP IRR at 4.5% cap rate
+      irr: Math.pow(1 + 1.603, 1/10) - 1, // 10.03% actual annual return from 160.30% LP Cash on Cash Return
       yield: 0.0803, // 8.03% average development yield over 10 years
-      noi: 3975000,
+      noi: 5159032, // Year 10 NOI from CSV
       label: "10% Rent Premium",
       description: "Moderate projections with 10% rent premium over market",
       year1CashFlow: 0.035,
       year1NOI: 103525
     },
     optimistic: {
-      irr: 0.2224, // 22.24% LP IRR at 4.5% cap rate
+      irr: Math.pow(1 + 1.603, 1/10) - 1, // 10.03% actual annual return from 160.30% LP Cash on Cash Return
       yield: 0.0803, // 8.03% average development yield over 10 years
-      noi: 4177000,
+      noi: 5159032, // Year 10 NOI from CSV
       label: "15% Rent Premium",
       description: "Optimistic projections with 15% rent premium over market",
       year1CashFlow: 0.04,
