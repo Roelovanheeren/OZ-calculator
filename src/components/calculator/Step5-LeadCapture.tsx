@@ -144,14 +144,14 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
             Get Your Personalized Hazen Road Investment Package
           </CardTitle>
           <CardContent className="text-center py-8">
-            <div className="financial-highlight" style={{ padding: '2rem' }}>
+            <div className="financial-highlight px-4 md:px-8" style={{ padding: '2rem 1rem' }}>
               <div className="text-5xl font-bold mb-6" style={{ 
                 fontFamily: 'Playfair Display, Georgia, serif',
                 color: '#2c3e50'
               }}>
                 {ozProjection ? formatCurrency(ozProjection.totalStackedBenefits) : '$0'}
               </div>
-              <div className="text-xl mb-4" style={{ 
+              <div className="text-lg md:text-xl mb-4 px-2" style={{ 
                 fontFamily: 'Inter, Helvetica Neue, sans-serif',
                 color: '#2c3e50'
               }}>
