@@ -142,6 +142,20 @@ input, select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Mobile-specific input styling */
+@media (max-width: 768px) {
+  input, select {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  input:focus, select:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    border-color: #3b82f6 !important;
+  }
+}
+
 /* Date input specific styling */
 input[type="month"], input[type="date"] {
   position: relative !important;
@@ -197,6 +211,19 @@ input, select {
 /* Enhanced shadow for all input fields */
 input, select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force shadow styling on all input types */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="number"], 
+input[type="date"], 
+input[type="month"],
+select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
 }
 
 /* Radio button containers */
