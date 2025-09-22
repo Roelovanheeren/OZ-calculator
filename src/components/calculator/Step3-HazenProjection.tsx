@@ -152,6 +152,9 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                   {formatCurrency(projectedValue)}
                 </div>
                 <p className="text-gray-600">Projected Value at Exit</p>
+                <p className="text-xs text-blue-600 mt-2 font-medium">
+                  *10-year hold period required for full OZ benefits
+                </p>
               </div>
               
               <div className="grid grid-cols-2 gap-4 text-sm">
