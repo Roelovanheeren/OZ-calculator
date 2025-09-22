@@ -15,8 +15,10 @@ interface Props {
   onBack: () => void;
 }
 
-export function Step3HazenProjection({ onComplete, onBack }: Props) {
-  const [investmentAmount, setInvestmentAmount] = useState(500000);
+export function Step3HazenProjection({ profile, onComplete, onBack }: Props) {
+  // Use capital gains amount as default investment, capped at max LP equity
+  const defaultInvestment = Math.min(profile.capitalGainAmount || 500000, 19325000);
+  const [investmentAmount, setInvestmentAmount] = useState(defaultInvestment);
   const [scenario] = useState<'conservative' | 'moderate' | 'optimistic'>('moderate');
 
   const handleSubmit = () => {
@@ -84,6 +86,11 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your Investment Amount
                   </label>
+                  <p className="text-xs text-gray-600 mb-2" style={{ 
+                    fontFamily: 'Inter, Helvetica Neue, sans-serif'
+                  }}>
+                    Default set to your capital gains amount (100% deferral). Adjust as needed.
+                  </p>
                   
                   {/* Slider Option */}
                   <div className="mb-4">
