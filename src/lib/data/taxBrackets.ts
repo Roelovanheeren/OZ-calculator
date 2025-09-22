@@ -63,3 +63,4 @@ export const INCOME_RANGES = [
   { value: 2000000, label: 'Over $1M' }
 ];
 // Updated income ranges Mon Sep 22 16:59:07 WITA 2025
+// FORCE REBUILD - Mon Sep 22 17:03:01 WITA 2025
