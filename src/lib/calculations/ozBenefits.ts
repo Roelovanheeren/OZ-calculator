@@ -2,6 +2,23 @@ import { HAZEN_PROJECT_DATA } from '../data/hazenData';
 import { OZProjection, ComparisonData } from '../../types/calculator';
 import { calculateBonusDepreciation, calculateYear1CashFlowBenefit } from './bonusDepreciation';
 
+// Unified tax rate system - single source of truth
+interface TaxRates {
+  federalLTCG: number;
+  niit: number;
+  stateLTCG: number;
+  marginalOrdinary: number;
+}
+
+function getTaxRates(currentTaxRate: number, ordinaryIncomeRate: number): TaxRates {
+  return {
+    federalLTCG: 0.20, // Federal long-term capital gains
+    niit: 0.038, // Net Investment Income Tax
+    stateLTCG: 0.025, // Arizona state tax (2.5%)
+    marginalOrdinary: ordinaryIncomeRate // For depreciation benefits
+  };
+}
+
 export function calculateOZProjection(
   investmentAmount: number,
   scenario: 'conservative' | 'moderate' | 'optimistic',
@@ -10,42 +27,63 @@ export function calculateOZProjection(
   ordinaryIncomeRate: number
 ): OZProjection {
   const scenarioData = HAZEN_PROJECT_DATA.scenarios[scenario];
-  const annualReturn = scenarioData.irr;
+  const rates = getTaxRates(currentTaxRate, ordinaryIncomeRate);
   
-  // Compound growth calculation
-  const projectedValue = investmentAmount * Math.pow(1 + annualReturn, holdPeriod);
-  const taxFreeGains = projectedValue - investmentAmount;
+  // Cap investment at max LP equity
+  const maxInvestment = 19323884; // $19,323,884
+  const cappedInvestment = Math.min(investmentAmount, maxInvestment);
   
-  // OZ tax savings - use the correct tax rate (23.8% for high earners)
-  const effectiveTaxRate = Math.max(currentTaxRate, 0.238); // Minimum 23.8% for high earners
-  const deferredTax = investmentAmount * effectiveTaxRate; // Original gain tax deferred
-  const appreciationTaxSaved = taxFreeGains * effectiveTaxRate; // Tax on appreciation saved
-  const ozTaxSavings = deferredTax + appreciationTaxSaved;
+  // Calculate investor's pro-rata share of the LP equity
+  const lpEquityRequired = 19323884; // $19,323,884
+  const investorShare = cappedInvestment / lpEquityRequired;
   
-  // NEW: Bonus depreciation calculations
+  // Use the actual LP profit from the CSV model
+  const totalLPProfit = 34181982; // $34,181,982
+  const investorLPProfit = totalLPProfit * investorShare;
+  
+  // Projected value = initial investment + LP profit (this gives the total return)
+  const projectedValue = cappedInvestment + investorLPProfit;
+  const taxFreeGains = investorLPProfit;
+  
+  // Calculate the actual annual return from the model
+  // LP Cash on Cash Return is 160.30% over 10 years
+  // This means: (1 + annual_return)^10 = 1 + 1.603 = 2.603
+  // So: annual_return = (2.603)^(1/10) - 1 = 0.1003 = 10.03%
+  const actualAnnualReturn = Math.pow(1 + 1.603, 1/10) - 1;
+  
+  // OZ Capital Gains Deferral (federal only - state policy unclear, assume deferred)
+  const ozDeferral = cappedInvestment * rates.federalLTCG; // $500k × 20% = $100k
+  
+  // 10-Year Tax-Free Appreciation (federal + state at exit)
+  const appreciationTaxSaved = taxFreeGains * (rates.federalLTCG + rates.stateLTCG);
+  
+  // OZ Tax Savings (deferral + appreciation savings)
+  const ozTaxSavings = ozDeferral + appreciationTaxSaved;
+  
+  // Bonus depreciation calculations - use total project cost for depreciation allocation
   const depreciationCalc = calculateBonusDepreciation(
-    investmentAmount,
+    cappedInvestment,
     HAZEN_PROJECT_DATA.totalCost,
-    ordinaryIncomeRate
+    rates.marginalOrdinary
   );
   
   const year1CashFlowCalc = calculateYear1CashFlowBenefit(
-    investmentAmount,
+    cappedInvestment,
     scenario,
     depreciationCalc.bonusDepreciationDeduction
   );
   
   // Total stacked benefits
-  const totalStackedBenefits = ozTaxSavings + depreciationCalc.depreciationTaxSavings;
+  const totalStackedBenefits = depreciationCalc.depreciationTaxSavings + ozDeferral + appreciationTaxSaved;
   
   return {
-    investmentAmount,
+    investmentAmount: cappedInvestment, // Return capped investment
     scenario,
     holdPeriod,
     projectedValue,
     taxFreeGains,
     totalTaxSavings: ozTaxSavings,
-    deferredTax,
+    deferredTax: ozDeferral, // Federal deferral only
     appreciationTaxSaved,
     bonusDepreciationDeduction: depreciationCalc.bonusDepreciationDeduction,
     depreciationTaxSavings: depreciationCalc.depreciationTaxSavings,
@@ -59,33 +97,35 @@ export function calculateComparison(
   currentTaxRate: number,
   originalGainAmount: number
 ): ComparisonData {
-  const { investmentAmount, projectedValue, totalTaxSavings, depreciationTaxSavings } = ozProjection;
+  const { investmentAmount, projectedValue, depreciationTaxSavings, deferredTax, appreciationTaxSaved } = ozProjection;
+  const rates = getTaxRates(currentTaxRate, 0.395); // Use 39.5% for high earners
   
-  // Use the correct effective tax rate (23.8% for high earners)
-  const effectiveTaxRate = Math.max(currentTaxRate, 0.238);
+  // Calculate tax on the investment tranche
+  const trancheTaxRate = rates.federalLTCG + rates.niit + rates.stateLTCG; // 20% + 3.8% + 2.5% = 26.3%
+  const taxesPaidNowOnTranche = investmentAmount * trancheTaxRate;
   
-  // Without OZ scenario
-  const taxesPaidNow = originalGainAmount * effectiveTaxRate;
-  const availableToInvest = originalGainAmount - taxesPaidNow;
-  const withoutOZValue = availableToInvest * Math.pow(1.08, ozProjection.holdPeriod); // Assume 8% return elsewhere
-  const withoutOZTaxesOnAppreciation = (withoutOZValue - availableToInvest) * effectiveTaxRate;
+  // Without OZ scenario - use 8% return as mentioned in spreadsheet
+  const availableToInvest = investmentAmount - taxesPaidNowOnTranche;
+  const withoutOZValue = availableToInvest * Math.pow(1.08, ozProjection.holdPeriod); // 8% return elsewhere
+  const withoutOZTaxesOnAppreciation = (withoutOZValue - availableToInvest) * trancheTaxRate;
   const withoutOZNetWealth = withoutOZValue - withoutOZTaxesOnAppreciation;
   
-  // With OZ scenario - include depreciation tax savings
+  // With OZ scenario - only pay NIIT and state now (federal deferred)
+  const ozTaxesPaidNow = investmentAmount * (rates.niit + rates.stateLTCG); // Only NIIT + state
   const withOZValue = projectedValue;
   const withOZNetWealth = withOZValue + depreciationTaxSavings; // Include depreciation tax savings
   
   return {
     withoutOZ: {
       initialInvestment: availableToInvest,
-      taxesPaidNow,
+      taxesPaidNow: taxesPaidNowOnTranche,
       tenYearValue: withoutOZValue,
       taxesOnAppreciation: withoutOZTaxesOnAppreciation,
       netWealth: withoutOZNetWealth
     },
     withOZ: {
       initialInvestment: investmentAmount,
-      taxesPaidNow: 0,
+      taxesPaidNow: ozTaxesPaidNow, // Only NIIT + state, not zero
       tenYearValue: withOZValue,
       taxesOnAppreciation: 0,
       netWealth: withOZNetWealth
