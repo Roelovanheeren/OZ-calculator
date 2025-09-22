@@ -50,7 +50,7 @@ export function calculateCurrentTaxLiability(profile: InvestorProfile): TaxCalcu
   const deadlineDate = new Date(saleDate.getTime() + (180 * 24 * 60 * 60 * 1000));
   
   return {
-    federalRate: federalRate + niitRate,
+    federalRate: federalRate,
     stateRate,
     niitApplies,
     totalTaxOwed,
