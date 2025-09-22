@@ -266,7 +266,7 @@ export function Step5LeadCapture({ ozProjection, onBack }: Props) {
           
           <Input
             label="When did you realize your capital gains? (Optional)"
-            type="month"
+            type="date"
             {...register('saleDate')}
             error={errors.saleDate?.message}
           />

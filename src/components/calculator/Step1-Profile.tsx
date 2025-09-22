@@ -162,8 +162,8 @@ export function Step1Profile({ onComplete, initialData }: Props) {
           
           <Input
             label="Date of Sale"
-            type="month"
-            placeholder="YYYY-MM"
+            type="date"
+            placeholder="Select date"
             {...register('saleDate', validationRules.saleDate)}
             error={errors.saleDate?.message}
           />
