@@ -37,13 +37,13 @@ export function calculateOZProjection(
   const lpEquityRequired = 19323884; // $19,323,884
   const investorShare = cappedInvestment / lpEquityRequired;
   
-  // Use the actual LP profit from the CSV model
-  const totalLPProfit = 34181982; // $34,181,982
-  const investorLPProfit = totalLPProfit * investorShare;
+  // Use the actual total LP value from the model (profit + return of capital)
+  const totalLPValue = 53505866; // $53,505,866 total LP value at exit
+  const investorLPValue = totalLPValue * investorShare;
   
-  // Projected value = initial investment + LP profit (this gives the total return)
-  const projectedValue = cappedInvestment + investorLPProfit;
-  const taxFreeGains = investorLPProfit;
+  // Projected value = investor's share of total LP value
+  const projectedValue = investorLPValue;
+  const taxFreeGains = projectedValue - cappedInvestment;
   
   // Calculate the actual annual return from the model
   // LP Cash on Cash Return is 160.30% over 10 years

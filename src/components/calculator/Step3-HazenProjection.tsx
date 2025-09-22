@@ -30,16 +30,26 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
   // Calculate projected returns using proportional LP method
   const scenarioData = HAZEN_PROJECT_DATA.scenarios[scenario];
   
-  // LP exit value calculation (37% of total project value)
-  const totalProjectValue = 114600000; // $114.6M total project value
-  const lpExitValue = totalProjectValue * 0.37; // $42.4M LP exit value
+  // Updated calculations based on actual model data
+  const noiYear10 = 5159032; // $5,159,032 NOI Year 10
+  const exitCapRate = 0.045; // 4.50% exit cap rate
+  const allInDevelopmentCost = 52109710; // $52,109,710 all-in development cost
+  const lpEquityRequired = 19323884; // $19,323,884 total LP equity
+  const lpPrefReturn = 5828528; // $5,828,528 LP preferred return
+  
+  // Calculate exit value and profit
+  const impliedExitValue = noiYear10 / exitCapRate; // $114,645,146
+  const developmentProfit = impliedExitValue - allInDevelopmentCost; // $62,535,436
+  const profitForSplit = developmentProfit - lpPrefReturn; // $56,706,908
+  const lpShareOfSplit = profitForSplit * 0.5; // $28,353,454 (50/50 split)
+  const lpProfit = lpPrefReturn + lpShareOfSplit; // $34,181,982
+  const totalToLP = lpProfit + lpEquityRequired; // $53,505,866
   
   // Calculate investor's pro-rata share of the LP equity
-  const lpEquityRequired = 19323884; // $19,323,884 total LP equity
   const investorShare = Math.min(investmentAmount, lpEquityRequired) / lpEquityRequired;
   
-  // Projected value = investor's share of LP exit value
-  const projectedValue = lpExitValue * investorShare;
+  // Projected value = investor's share of total LP value
+  const projectedValue = totalToLP * investorShare;
   const taxFreeGains = projectedValue - investmentAmount;
 
   return (
