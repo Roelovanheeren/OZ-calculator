@@ -127,24 +127,15 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-center">
-              <div className="text-3xl font-bold mb-2" style={{ 
-                color: '#2c3e50',
-                fontFamily: 'Playfair Display, Georgia, serif'
-              }}>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
-              </div>
+                <div className="text-3xl font-bold mb-2" style={{ 
+                  color: '#2c3e50',
+                  fontFamily: 'Playfair Display, Georgia, serif'
+                }}>
+                  {formatCurrency(ozProjection.totalStackedBenefits)}
+                </div>
                 <p className="text-gray-600" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>Additional Wealth with Triple-Stacked Benefits</p>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
-              </div>
-              
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm text-blue-800" style={{ 
-                  fontFamily: 'Inter, Helvetica Neue, sans-serif'
-                }}>
-                </p>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
               </div>
             </CardContent>
           </Card>
@@ -161,49 +152,45 @@ export function Step4Comparison({ ozProjection, taxCalculation, onNext, onBack }
                 <span className="text-gray-600 flex-1" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>Immediate Depreciation Savings</span>
-              <span className="font-semibold text-right flex-1" style={{ 
-                color: '#2c3e50',
-                fontFamily: 'Playfair Display, Georgia, serif'
-              }}>
-                {formatCurrency(ozProjection.depreciationTaxSavings)} in Year 1
-              </span>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
+                <span className="font-semibold text-right flex-1" style={{ 
+                  color: '#2c3e50',
+                  fontFamily: 'Playfair Display, Georgia, serif'
+                }}>
+                  {formatCurrency(ozProjection.depreciationTaxSavings)} in Year 1
+                </span>
               </div>
               <div className="flex items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600 flex-1" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>OZ Capital Gains Deferral</span>
-              <span className="font-semibold text-right flex-1" style={{ 
-                color: '#2c3e50',
-                fontFamily: 'Playfair Display, Georgia, serif'
-              }}>
-                Defer {formatCurrency(taxesPaidNow)} in taxes until 2026
-              </span>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
+                <span className="font-semibold text-right flex-1" style={{ 
+                  color: '#2c3e50',
+                  fontFamily: 'Playfair Display, Georgia, serif'
+                }}>
+                  Defer {formatCurrency(taxesPaidNow)} in taxes until 2026
+                </span>
               </div>
               <div className="flex items-center py-2 border-b border-gray-200">
                 <span className="text-gray-600 flex-1" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>10-Year Tax-Free Appreciation</span>
-              <span className="font-semibold text-right flex-1" style={{ 
-                color: '#2c3e50',
-                fontFamily: 'Playfair Display, Georgia, serif'
-              }}>
-                Pay $0 in taxes on {formatCurrency(ozProjection.taxFreeGains)} in gains
-              </span>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
+                <span className="font-semibold text-right flex-1" style={{ 
+                  color: '#2c3e50',
+                  fontFamily: 'Playfair Display, Georgia, serif'
+                }}>
+                  Pay $0 in taxes on {formatCurrency(ozProjection.taxFreeGains)} in gains
+                </span>
               </div>
               <div className="flex items-center py-2">
                 <span className="text-gray-600 font-semibold flex-1" style={{ 
                   fontFamily: 'Inter, Helvetica Neue, sans-serif'
                 }}>Total Stacked Benefits</span>
-              <span className="font-bold text-lg text-right flex-1" style={{ 
-                color: '#2c3e50',
-                fontFamily: 'Playfair Display, Georgia, serif'
-              }}>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
-              </span>
-                {formatCurrency(ozProjection.totalStackedBenefits)}
+                <span className="font-bold text-lg text-right flex-1" style={{ 
+                  color: '#2c3e50',
+                  fontFamily: 'Playfair Display, Georgia, serif'
+                }}>
+                  {formatCurrency(ozProjection.totalStackedBenefits)}
+                </span>
               </div>
             </CardContent>
           </Card>
