@@ -46,7 +46,6 @@ export function Calculator() {
         return (
           <Step1Profile 
             onComplete={handleStep1Complete}
-            initialData={profile}
           />
         );
       
