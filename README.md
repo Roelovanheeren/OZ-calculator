@@ -253,3 +253,4 @@ For technical support or questions about the calculator, please contact the deve
 ---
 
 **Built with ❤️ for Hazen Road Opportunity Zone Fund**# OZ Calculator - Updated Mon Sep 22 16:46:06 WITA 2025
+# Fixed CSV model calculations - Mon Sep 22 16:51:02 WITA 2025
