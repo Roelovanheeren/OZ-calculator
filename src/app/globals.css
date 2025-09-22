@@ -137,10 +137,9 @@ input, select {
   cursor: pointer !important;
 }
 
-/* Grey input fields for better visibility */
-input.bg-gray-100, input[class*="bg-gray-100"] {
-  background-color: #f3f4f6 !important;
-  border-color: #d1d5db !important;
+/* Enhanced shadow for input fields */
+input, select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Date input specific styling */
@@ -195,10 +194,9 @@ input, select {
   transition: all 0.2s ease !important;
 }
 
-/* Ensure grey input fields override the white background */
-input.bg-gray-100, input[class*="bg-gray-100"] {
-  background-color: #f3f4f6 !important;
-  border-color: #d1d5db !important;
+/* Enhanced shadow for all input fields */
+input, select {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Radio button containers */

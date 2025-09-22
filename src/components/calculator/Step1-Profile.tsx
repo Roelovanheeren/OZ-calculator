@@ -58,7 +58,7 @@ export function Step1Profile({ onComplete }: Props) {
               </p>
                     <input
                       type="number"
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm bg-gray-100"
+                      className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-md focus:border-blue-500 focus:ring-blue-500 text-sm bg-white"
                       placeholder="e.g., 500000"
                       {...register('capitalGainAmount', validationRules.capitalGainAmount)}
                     />
