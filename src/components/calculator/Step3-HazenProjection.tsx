@@ -28,9 +28,19 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
     });
   };
 
-  // Calculate projected returns for display
+  // Calculate projected returns using proportional LP method
   const scenarioData = HAZEN_PROJECT_DATA.scenarios[scenario];
-  const projectedValue = investmentAmount * Math.pow(1 + scenarioData.irr, holdPeriod);
+  
+  // LP exit value calculation (37% of total project value)
+  const totalProjectValue = 114600000; // $114.6M total project value
+  const lpExitValue = totalProjectValue * 0.37; // $42.4M LP exit value
+  
+  // Calculate investor's pro-rata share of the LP equity
+  const lpEquityRequired = 19323884; // $19,323,884 total LP equity
+  const investorShare = Math.min(investmentAmount, lpEquityRequired) / lpEquityRequired;
+  
+  // Projected value = investor's share of LP exit value
+  const projectedValue = lpExitValue * investorShare;
   const taxFreeGains = projectedValue - investmentAmount;
 
   return (
@@ -186,8 +196,8 @@ export function Step3HazenProjection({ onComplete, onBack }: Props) {
                   <div className="font-semibold text-green-600">{formatCurrency(taxFreeGains)}</div>
                 </div>
                 <div>
-                  <span className="text-gray-600">Annual Return:</span>
-                  <div className="font-semibold">{(scenarioData.irr * 100).toFixed(1)}%</div>
+                  <span className="text-gray-600">Projected Return:</span>
+                  <div className="font-semibold">10.0%</div>
                 </div>
                 <div>
                   <span className="text-gray-600">Development Yield:</span>
